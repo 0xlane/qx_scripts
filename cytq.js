@@ -1,6 +1,6 @@
 /* 使用公开的脚本改了改，又能用了（登录后自动解锁）
  * hostname = biz.caiyunapp.com,biz.caiyunapp.cn,biz.cyapi.com,biz.cyapi.cn
- * surge/Loon
+ * surge/Loon/shadowrocket
  * 彩云天气 = type=http-response,requires-body=1,max-size=0,pattern=https?:\/\/biz\.(caiyunapp|cyapi)\.(com|cn)\/(membership_rights|v2\/user),script-path= https://raw.githubusercontent.com/0xlane/qx_scripts/master/cytq.js
  * QuantumultX    
  * https?:\/\/biz\.(caiyunapp|cyapi)\.(com|cn)/(membership_rights|v2\/user) url script-response-body https://raw.githubusercontent.com/0xlane/qx_scripts/master/cytq.js
@@ -9,11 +9,6 @@
 const SCRIPT_NAME = '彩云天气';
 const USER_REGEX = /https?:\/\/biz\.(caiyunapp|cyapi)\.(com|cn)\/v2\/user/;
 const RIGHTS_REGEX = /https?:\/\/biz\.(caiyunapp|cyapi)\.(com|cn)\/membership_rights/;
-const RESULT = {
-  is_vip: true,
-  vip_type: "s",
-  svip_expired_at: 1882066669.9452950954,
-}
 const RESULT_WT = {
   vip: {
     is_auto_renewal: false,

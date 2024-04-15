@@ -1,14 +1,14 @@
 /* 使用公开的脚本改了改，又能用了（登录后自动解锁）
- * hostname = biz.caiyunapp.com,biz.caiyunapp.cn,biz.cyapi.com,biz.cyapi.cn
+ * hostname = biz.caiyunapp.com,biz.caiyunapp.cn,biz.cyapi.com,biz.cyapi.cn,starplucher.cyapi.cn,starplucher.cyapi.com,starplucher.caiyunapp.com,starplucher.caiyunapp.cn
  * surge/Loon/shadowrocket
- * 彩云天气 = type=http-response,requires-body=1,max-size=0,pattern=https?:\/\/biz\.(caiyunapp|cyapi)\.(com|cn)\/(membership_rights|v2\/user),script-path= https://raw.githubusercontent.com/0xlane/qx_scripts/master/cytq.js
+ * 彩云天气 = type=http-response,requires-body=1,max-size=0,pattern=https?:\/\/(biz|starplucher)\.(caiyunapp|cyapi)\.(com|cn)\/(v3\/subseasonal|v2\/user),script-path= https://raw.githubusercontent.com/0xlane/qx_scripts/master/cytq.js
  * QuantumultX    
- * https?:\/\/biz\.(caiyunapp|cyapi)\.(com|cn)/(membership_rights|v2\/user) url script-response-body https://raw.githubusercontent.com/0xlane/qx_scripts/master/cytq.js
+ * https?:\/\/(biz|starplucher)\.(caiyunapp|cyapi)\.(com|cn)\/(v3\/subseasonal|v2\/user) url script-response-body https://raw.githubusercontent.com/0xlane/qx_scripts/master/cytq.js
  */
 
 const SCRIPT_NAME = '彩云天气';
 const USER_REGEX = /https?:\/\/biz\.(caiyunapp|cyapi)\.(com|cn)\/v2\/user/;
-const RIGHTS_REGEX = /https?:\/\/biz\.(caiyunapp|cyapi)\.(com|cn)\/membership_rights/;
+// const SEASONAL_REGEX = /https?:\/\/starplucher.(caiyunapp|cyapi)\.(com|cn)\/v3\/subseasonal/;
 const RESULT_WT = {
   vip: {
     is_auto_renewal: false,
@@ -17,119 +17,6 @@ const RESULT_WT = {
     expired_at: 0,
     svip_expired_at: 1882066669.0
   }
-}
-const RIGHTS = { 
-  "result": [
-    { 
-      "name": "\u514d\u5e7f\u544a", 
-      "enabled": true, 
-      "vip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/vip-ads-free.png",
-      "vip": true, 
-      "svip": true, 
-      "_id": "5ee5eb091d28d2634a2ee08f", 
-      "svip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/svip-ads-free.png" 
-    }, 
-    { 
-      "name": "\u591a\u5730\u5929\u6c14\u63a8\u9001", 
-      "enabled": true, 
-      "vip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/vip-custom-push.png", 
-      "vip": true, 
-      "svip": true, 
-      "_id": "5ee5eb091d28d2634a2ee090", 
-      "svip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/svip-custom-push.png" 
-    }, 
-    { 
-      "name": "\u964d\u6c34\u63d0\u9192", 
-      "enabled": true, 
-      "vip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/vip-rain-notification.png", 
-      "vip": true, 
-      "svip": true, 
-      "_id": "5ee5eb091d28d2634a2ee091", 
-      "svip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/svip-rain-notification.png" 
-    }, 
-    { 
-      "name": "\u536b\u661f\u4e91\u56fe", 
-      "enabled": true, 
-      "vip_icon": null, 
-      "vip": false, 
-      "svip": true, 
-      "_id": "5ee5eb091d28d2634a2ee092", 
-      "svip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/svip-satellite-clouds.png" 
-    }, 
-    { 
-      "name": "\u4e91\u91cf", 
-      "enabled": true, 
-      "vip_icon": null, 
-      "vip": false, 
-      "svip": true,
-      "_id": "5ee5eb091d28d2634a2ee093", 
-      "svip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/svip-cloud-cover.png"
-    }, 
-    { 
-      "name": "\u6c14\u6e29\u9884\u62a5", 
-      "enabled": true, 
-      "vip_icon": null, 
-      "vip": false, 
-      "svip": true, 
-      "_id": "5ee5eb091d28d2634a2ee094", 
-      "svip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/svip-tmp-forecast.png"
-    }, 
-    { 
-      "name": "\u9732\u70b9\u6e29\u5ea6\u9884\u62a5", 
-      "enabled": true, 
-      "vip_icon": null, 
-      "vip": false, 
-      "svip": true, 
-      "_id": "5ee5eb091d28d2634a2ee095", 
-      "svip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/svip-dew-point-tmp-forecast.png" 
-    }, 
-    { 
-      "name": "\u77ed\u6ce2\u8f90\u5c04\u901a\u91cf", 
-      "enabled": true, 
-      "vip_icon": null, 
-      "vip": false, 
-      "svip": true, 
-      "_id": "5ee5eb091d28d2634a2ee096", 
-      "svip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/svip-short-wave-radiation.png" 
-    }, 
-    { 
-      "name": "\u6c14\u538b", 
-      "enabled": true, 
-      "vip_icon": null, 
-      "vip": false, 
-      "svip": true, 
-      "_id": "5ee5eb091d28d2634a2ee097", 
-      "svip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/svip-pressure.png" 
-    }, 
-    { 
-      "name": "\u80fd\u89c1\u5ea6", 
-      "enabled": true, 
-      "vip_icon": null, 
-      "vip": false, 
-      "svip": true, 
-      "_id": "5ee5eb091d28d2634a2ee098", 
-      "svip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/svip-visibility.png" 
-    }, 
-    { 
-      "name": "\u6e7f\u5ea6\u9884\u62a5", 
-      "enabled": true, 
-      "vip_icon": null, 
-      "vip": false, 
-      "svip": true, 
-      "_id": "5ee5eb091d28d2634a2ee099", 
-      "svip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/svip-humidity-forecast.png" 
-    }, 
-    { 
-      "name": "2\u5929\u964d\u96e8\u9884\u62a5\u56fe", 
-      "enabled": true, 
-      "vip_icon": null, 
-      "vip": false, 
-      "svip": true, 
-      "_id": "5ee5eb091d28d2634a2ee09a", 
-      "svip_icon": "https://cdn.caiyunapp.com/ad/img/membership_rights/svip-rain-forecast.png" 
-    }
-  ], 
-  "rc": 0 
 }
 
 let magicJS = MagicJS(SCRIPT_NAME);
@@ -155,10 +42,16 @@ function Main(){
         magicJS.done();
       }
     }
-    if (RIGHTS_REGEX.test(magicJS.request.url)){
-      let body = JSON.stringify(RIGHTS);
-      magicJS.done({body});
-    }
+    // if (SEASONAL_REGEX.test(magicJS.request.url)){
+    //   let obj = JSON.stringify(magicJS.response.body);
+    //   obj['data'].forEach(item => {
+    //     if (!item.hasOwnProperty('wind_speed')) {
+    //       // api只返回近15天天气，暂不处理
+    //     }
+    //   });
+    //   let body = JSON.stringify(obj);
+    //   magicJS.done({body});
+    // }
   }
 }
 

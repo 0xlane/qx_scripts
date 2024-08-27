@@ -1,4 +1,4 @@
-/* 先登录再使用脚本解锁
+/* 先登录再使用脚本解锁（失效）
  * hostname = www.xmind.cn
  * surge/Loon/shadowrocket
  * XMIND = type=http-response,requires-body=1,max-size=0,pattern=https?:\/\/www\.xmind\.cn\/(_res\/profile|_res\/devices|_api\/appstore\/active),script-path= https://raw.githubusercontent.com/0xlane/qx_scripts/master/xmind.js

@@ -1,13 +1,14 @@
 /* 先登录再使用脚本解锁
  * hostname = www.xmind.cn
  * surge/Loon/shadowrocket
- * XMIND = type=http-response,requires-body=1,max-size=0,pattern=https?:\/\/www\.xmind\.cn\/(_res\/profile|_api\/appstore\/active),script-path= https://raw.githubusercontent.com/0xlane/qx_scripts/master/xmind.js
+ * XMIND = type=http-response,requires-body=1,max-size=0,pattern=https?:\/\/www\.xmind\.cn\/(_res\/profile|_res\/devices|_api\/appstore\/active),script-path= https://raw.githubusercontent.com/0xlane/qx_scripts/master/xmind.js
  * QuantumultX
- * https?:\/\/www\.xmind\.cn\/(_res\/profile|_api\/appstore\/active) url script-response-body https://raw.githubusercontent.com/0xlane/qx_scripts/master/xmind.js
+ * https?:\/\/www\.xmind\.cn\/(_res\/profile|_res\/devices|_api\/appstore\/active) url script-response-body https://raw.githubusercontent.com/0xlane/qx_scripts/master/xmind.js
  */
 
 const SCRIPT_NAME = 'xmind';
 const PROFILE_REGEX = /https?:\/\/www\.xmind\.cn\/_res\/profile\//;
+const DEVICES_REGEX = /https?:\/\/www\.xmind\.cn\/_res\/devices/;
 const API_ACTIVE_REGEX = /https?:\/\/www\.xmind\.cn\/_api\/appstore\/active/;
 const RESULT_PROFILE = {
   "full_name" : "15700893376",
@@ -59,6 +60,14 @@ const RESUTL_ACTIVE = {
   "receiptId" : "a807b5530db18e2566f4b1155865e7e7",
   "requestId" : "C3CF4B15-B4F5-416A-9992-3BEA14ABEF00"
 };
+const RESULT_DEVICE = {
+  "license" : {
+    "status" : "sub",
+    "expireTime" : 4091494480000
+  },
+  "_code" : 200,
+  "raw_data" : "pDIupLaYuwBzqScwNRp4K8PuAIvaKCmtOzKC63UGzGWVp8Stw0Qbpnqk7BoA+HNGDgtK/OF6qL4b8C3kRAcJ90MAzwi2FvT1jtAlp12jLMkxjV4xN+BLhmd9ngQ/CnWCmj10kuMiKIKd+yMRlM60qkqsgIvYmqtxlyWQ46zA6f0="
+}
 
 let magicJS = MagicJS(SCRIPT_NAME);
 
@@ -77,6 +86,16 @@ function Main(){
     if (API_ACTIVE_REGEX.test(magicJS.request.url)){
       try{
         let body = JSON.stringify(RESUTL_ACTIVE);
+        magicJS.done({body});
+      }
+      catch(err){
+        magicJS.log(`解锁VIP失败，异常信息${err}`);
+        magicJS.done();
+      }
+    }
+    if (DEVICES_REGEX.test(magicJS.request.url)){
+      try{
+        let body = JSON.stringify(RESULT_DEVICE);
         magicJS.done({body});
       }
       catch(err){

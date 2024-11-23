@@ -53,12 +53,33 @@
                 "https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/tieba.png",
                 "https://raw.githubusercontent.com/Orz-3/mini/master/Color/tieba.png"
             ]
+        },
+        {
+            "id": "HavalZhiJia",
+            "name": "哈弗智家",
+            "keys": [
+                "AccessTokenHAVAL"
+            ],
+            "descs_html": [
+                "<h4 align=\"center\">获取Cookie以及脚本配置请查看<a href=\"https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/HavalZhiJia.js\">脚本注释</a></h4>"
+            ],
+            "script": "https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/HavalZhiJia.js",
+            "author": "@reinject",
+            "repo": "https://github.com/0xlane/qx_scripts/blob/master/DailyJobs/HavalZhiJia.js",
+            "icons": [
+                "https://raw.githubusercontent.com/0xlane/qx_scripts/master/mini/Alpha/haval.png",
+                "https://raw.githubusercontent.com/0xlane/qx_scripts/master/mini/Color/haval.png"
+            ]
         }
     ],
     "task": [
         {
-            "config": "15 8 * * * https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/TieBa.js, tag=百度贴吧签到, img-url=ttps://raw.githubusercontent.com/Orz-3/mini/master/Color/tieba.png",
+            "config": "00 8 * * * https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/TieBa.js, tag=百度贴吧签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/tieba.png",
             "addons": "https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/QuantumultX/Snippet/TieBaCookie.snippet, tag=百度贴吧(获取Cookie)"
+        },
+        {
+            "config": "10 8 * * * https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/TieBa.js, tag=哈弗智家签到, img-url=https://raw.githubusercontent.com/0xlane/qx_scripts/master/mini/Color/haval.png",
+            "addons": "https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/QuantumultX/Snippet/.snippet, tag=哈弗智家(获取Cookie)"
         }
     ]
 }

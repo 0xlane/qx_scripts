@@ -20,7 +20,7 @@ https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/DailyJobs.j
 
 *********************************
 Loon 脚本订阅(非插件)：
-https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/Loon/LoonDailyJobs.plugin
+https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/Loon/TieBaDailyJob.plugin
 
 添加后请按需启用脚本
 
@@ -28,7 +28,7 @@ https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/Loon/LoonDa
 
 
 var $nobyda = nobyda();
-var cookieVal = $nobyda.read("CookieTB");
+var accessTokenVal = $nobyda.read("CookieTB");
 var useParallel = 0; //0自动切换,1串行,2并行(当贴吧数量大于30个以后,并行可能会导致QX崩溃,所以您可以自动切换)
 var singleNotifyCount = 20; //想签到几个汇总到一个通知里,这里就填几个(比如我有13个要签到的,这里填了5,就会分三次消息通知过去)
 var process = {
@@ -48,7 +48,7 @@ var url_fetch_sign = {
   headers: {
     "Content-Type": "application/octet-stream",
     Referer: "https://tieba.baidu.com/index/tbwise/forum",
-    Cookie: cookieVal,
+    Cookie: accessTokenVal,
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A366"
   }
 };
@@ -57,22 +57,22 @@ var url_fetch_add = {
   method: "POST",
   headers: {
     "Content-Type": "application/x-www-form-urlencoded",
-    Cookie: cookieVal,
+    Cookie: accessTokenVal,
     "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_1_1 like Mac OS X; zh-CN) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/14B100 UCBrowser/10.7.5.650 Mobile"
   },
   body: ""
 };
 if ($nobyda.isRequest) {
-  GetCookie()
+  GetAccessToken()
 } else {
-  signTieBa()
+  signHaval()
 }
 
 
-function signTieBa() {
+function signHaval() {
   useParallel = $nobyda.read("BDTB_DailyBonus_Mode") || useParallel
   singleNotifyCount = $nobyda.read("BDTB_DailyBonus_notify") || singleNotifyCount
-  if (!cookieVal) {
+  if (!accessTokenVal) {
     $nobyda.notify("贴吧签到", "签到失败", "未获取到cookie");
     return $nobyda.done()
   }
@@ -228,10 +228,10 @@ function checkIsAllProcessed() {
   }
 }
 
-function GetCookie() {
+function GetAccessToken() {
   let headerCookie = $request.headers["Cookie"] || $request.headers["cookie"];
   if (headerCookie && headerCookie.includes('BDUSS=')) {
-      if (!cookieVal) {
+      if (!accessTokenVal) {
         $nobyda.notify("写入百度贴吧Cookie成功 🎉", "", "");
       } else {
           console.log(`写入百度贴吧Cookie成功 🎉`);

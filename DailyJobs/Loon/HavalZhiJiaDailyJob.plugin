@@ -1,0 +1,13 @@
+#!name= 🐻 DailyJobs签到脚本
+#!desc= 包括哈弗智家签到。部分脚本获取Cookie方法请看脚本注释。注意，该Loon链接目前仅适用于"订阅脚本"，非"插件"。添加脚本订阅后请按需启用脚本。
+#!author= reinject
+#!homepage= https://github.com/reinject/qx_scripts/tree/master
+#!icon= https://raw.githubusercontent.com/0xlane/qx_scripts/master/mini/Color/haval.png
+
+
+[Script]
+cron "10 8 * * *" script-path=https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/HavalZhiJia.js, img-url=https://raw.githubusercontent.com/0xlane/qx_scripts/master/mini/Color/haval.png, timeout=300, enabled=false, tag=哈弗智家 [签到]
+http-request ^https?:\/\/(c\.tieba|tiebac)\.baidu\.com\/c\/s\/login script-path=https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/HavalZhiJia.js, img-url=https://raw.githubusercontent.com/0xlane/qx_scripts/master/mini/Color/haval.png, enabled=false, tag=哈弗智家 [Cookie]
+
+[MITM]
+hostname = gw-h5-gateway.gwmapp-h.com

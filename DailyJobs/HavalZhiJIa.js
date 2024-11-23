@@ -10,17 +10,17 @@
 
 *********************************
 Surge(iOS 5.9.0+/macOS 5.5.0+)模块：
-https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/Surge/Module/HavalZhiJIaDailyJob.sgmodule
+https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/Surge/Module/HavalZhiJIaDailyJob.sgmodule
 
 *********************************
 QuantumultX 任务仓库(Gallery)订阅：
-https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/DailyJobs.json
+https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/DailyJobs.json
 
 工具&分析->HTTP请求->右上角添加任务仓库->选择哈弗智家签到脚本添加定时任务和附加组件
 
 *********************************
 Loon 脚本订阅(非插件)：
-https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/Loon/HavalZhiJiaDailyJob.plugin
+https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/Loon/HavalZhiJiaDailyJob.plugin
 
 添加后请按需启用脚本
 

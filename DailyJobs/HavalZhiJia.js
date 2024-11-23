@@ -32,6 +32,7 @@ var accessTokenVal = $core.read("AccessTokenHAVAL");
 
 var url_fetch_sign = {
     url: "https://gw-h5-gateway.gwmapp-h.com/app-api/api/v1.0/signIn/sign",
+    method: "POST",
     headers: {
         accessToken: accessTokenVal,
         terminal: "GW_APP_Haval",

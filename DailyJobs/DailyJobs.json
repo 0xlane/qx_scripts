@@ -74,7 +74,7 @@
     ],
     "task": [
         {
-            "config": "00 8 * * * https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/TieBa.js, tag=百度贴吧签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/main/Color/tieba.png",
+            "config": "00 8 * * * https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/TieBa.js, tag=百度贴吧签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/tieba.png",
             "addons": "https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/QuantumultX/Snippet/TieBaCookie.snippet, tag=百度贴吧(获取Cookie)"
         },
         {

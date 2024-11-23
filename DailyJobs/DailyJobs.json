@@ -79,7 +79,7 @@
         },
         {
             "config": "10 8 * * * https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/HavalZhiJia.js, tag=哈弗智家签到, img-url=https://raw.githubusercontent.com/0xlane/qx_scripts/master/mini/Color/haval.png",
-            "addons": "https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/QuantumultX/Snippet/.snippet, tag=哈弗智家(获取Cookie)"
+            "addons": "https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/QuantumultX/Snippet/HavalZhiJiaCookie.snippet, tag=哈弗智家(获取Cookie)"
         }
     ]
 }

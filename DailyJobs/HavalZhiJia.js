@@ -32,7 +32,6 @@ var accessTokenVal = $core.read("AccessTokenHAVAL");
 
 var url_fetch_sign = {
     url: "https://gw-h5-gateway.gwmapp-h.com/app-api/api/v1.0/signIn/sign",
-    method: "POST",
     headers: {
         accessToken: accessTokenVal,
         terminal: "GW_APP_Haval",
@@ -65,7 +64,7 @@ function signHaval() {
         $core.notify("哈弗智家签到", "签到失败", "未获取到token");
         return $core.done()
     }
-    $core.get(url_fetch_sign, function (error, response, data) {
+    $core.post(url_fetch_sign, function (error, response, data) {
         if (error) {
             console.log(JSON.stringify(error));
             $core.notify("哈弗智家签到", "签到失败", JSON.stringify(error));

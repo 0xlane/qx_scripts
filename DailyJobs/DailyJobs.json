@@ -78,7 +78,7 @@
             "addons": "https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/QuantumultX/Snippet/TieBaCookie.snippet, tag=百度贴吧(获取Cookie)"
         },
         {
-            "config": "10 8 * * * https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/TieBa.js, tag=哈弗智家签到, img-url=https://raw.githubusercontent.com/0xlane/qx_scripts/master/mini/Color/haval.png",
+            "config": "10 8 * * * https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/HavalZhiJia.js, tag=哈弗智家签到, img-url=https://raw.githubusercontent.com/0xlane/qx_scripts/master/mini/Color/haval.png",
             "addons": "https://raw.githubusercontent.com/0xlane/qx_scripts/master/DailyJobs/QuantumultX/Snippet/.snippet, tag=哈弗智家(获取Cookie)"
         }
     ]

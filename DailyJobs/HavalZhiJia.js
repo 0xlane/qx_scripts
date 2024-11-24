@@ -110,6 +110,7 @@ function signHaval() {
 }
 
 function GetAccessToken() {
+    console.log($request.url)
     if ($request.url.startsWith(url_get_token)) {
         if ($response && $response.body) {
             let body = JSON.parse($response.body);
@@ -122,6 +123,7 @@ function GetAccessToken() {
                     nick,
                     headerAccessToken
                 };
+                console.log(headerAccessToken)
                 let exist = userInfos.find(function(x){ return x.userId == userId; });
                 if (!exist) {
                     userInfos.push(userInfo);

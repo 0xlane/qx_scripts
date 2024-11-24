@@ -63,7 +63,7 @@ var url_fetch_add = {
   body: ""
 };
 if ($nobyda.isRequest) {
-  GetAccessToken()
+  GetCookie()
 } else {
   signHaval()
 }
@@ -228,7 +228,7 @@ function checkIsAllProcessed() {
   }
 }
 
-function GetAccessToken() {
+function GetCookie() {
   let headerCookie = $request.headers["Cookie"] || $request.headers["cookie"];
   if (headerCookie && headerCookie.includes('BDUSS=')) {
       if (!userInfos) {

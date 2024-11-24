@@ -28,7 +28,8 @@ https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/Loon/HavalZhi
 
 
 var $core = core();
-var userInfos = JSON.parse($core.read("UserInfosHaval") || "[]");
+var userInfosHavalVal = $core.read("UserInfosHaval");
+var userInfos = JSON.parse(userInfosHavalVal ? userInfosHavalVal : "[]");
 
 var url_get_token = "https://gw-app-gateway.gwmapp-h.com/app-api/api/v1.0/userAuth/route/getUserDetail";
 var url_fetch_sign = {

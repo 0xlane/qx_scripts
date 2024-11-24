@@ -68,6 +68,8 @@ function signHaval() {
 
     let result = [];
     userInfos.forEach(user => {
+        url_fetch_sign.headers.accessToken = user.headerAccessToken;
+        url_fetch_sign_status.headers.accessToken = user.headerAccessToken;
         $core.post(url_fetch_sign, function (error, response, data) {
             if (error) {
                 // console.log(JSON.stringify(error));
@@ -104,7 +106,7 @@ function signHaval() {
         })
     });
 
-    console.log(result);
+    console.log(JSON.stringify(result));
 
     $core.notify("哈弗智家签到", "签到结果", result.join("\n"));
 

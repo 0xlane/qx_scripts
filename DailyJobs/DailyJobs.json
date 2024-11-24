@@ -58,7 +58,7 @@
             "id": "HavalZhiJia",
             "name": "哈弗智家",
             "keys": [
-                "AccessTokenHAVAL"
+                "UserInfosHaval"
             ],
             "descs_html": [
                 "<h4 align=\"center\">获取Cookie以及脚本配置请查看<a href=\"https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/HavalZhiJia.js\">脚本注释</a></h4>"

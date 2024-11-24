@@ -104,6 +104,8 @@ function signHaval() {
         })
     });
 
+    console.log(result);
+
     $core.notify("哈弗智家签到", "签到结果", result.join("\n"));
 
     return $core.done();
@@ -125,7 +127,7 @@ function GetAccessToken() {
                 let exist = userInfos.find(function(x){ return x.userId == userId; });
                 if (!exist) {
                     userInfos.push(userInfo);
-                    $core.notify("哈弗智家签到", "添加签到用户", `Token获取成功，将准备为用户${nick}每日签到`);
+                    $core.notify("哈弗智家签到", "添加签到用户", `Token获取成功，将为用户${nick}每日签到`);
                     $core.write(JSON.stringify(userInfos), "UserInfosHaval");
                 } else if (exit.headerAccessToken != headerAccessToken) {
                     exit.headerAccessToken = headerAccessToken;

@@ -107,7 +107,7 @@ function signJDBean() {
 
 function GetCookie() {
     if ($request.url.startsWith("https://api.m.jd.com/")) {
-        if ($request.headers["Cookie"]) {
+        if ($request.headers["Cookie"] && $request.headers["Cookie"] != cookieJD) {
             $core.notify(SCRIPT_NAME, "Cookie获取成功");
             $core.write($request.headers["Cookie"], "CookieJD");
         }

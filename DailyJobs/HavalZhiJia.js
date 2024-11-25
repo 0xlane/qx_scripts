@@ -3,10 +3,10 @@
 
 脚本原作者: @reinject
 平台兼容: QuantumultX, Surge, Loon
-更新日期: 2024/11/24
+更新日期: 2024/11/25
 
 获取Cookie说明：
-打开哈弗智家App后, 点击“我的-设置-清理缓存”，如通知成功获取token则可以使用该脚本.
+打开哈弗智家App后, 点击“我的-设置-清理缓存”或重新登录，如通知成功获取token则可以使用该脚本.
 
 *********************************
 Surge(iOS 5.9.0+/macOS 5.5.0+)模块：
@@ -115,8 +115,8 @@ function signHaval() {
                             return iter();
                         }
 
-                        var totalPoint = (body && body.data.totalPoint) ? body.data.totalPoint : "unkown";
-                        result.push(`用户${user.nick}签到成功：当前共有${totalPoint}积分`);
+                        var remindPoint = (body && body.data.remindPoint) ? body.data.remindPoint : "unkown";
+                        result.push(`用户${user.nick}签到成功：当前共有${remindPoint}积分`);
                         index++;
                         return iter();
                     }

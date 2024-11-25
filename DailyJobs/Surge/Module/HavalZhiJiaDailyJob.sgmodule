@@ -1,5 +1,5 @@
 #!name=🐻 哈弗智家 [签到]
-#!desc=每日定时签到，模块参数可调整签到时间。\n打开哈弗智家APP点击“我的-会员中心”即可获取cookie.
+#!desc=每日定时签到，模块参数可调整签到时间。\n打开哈弗智家APP点击“我的-设置-清除缓存”即可获取cookie.
 #!arguments=定时签到:10 8 * * *,禁用脚本:哈弗智家[Cookie],禁用MITM:hostname
 #!arguments-desc=定时签到：Cron表达式，默认每天早上 08:10 执行。\n\n禁用脚本：禁用获取Cookie脚本，输入 # 表示禁用。\n\n禁用MITM：禁用MITM主机名，输入 # 表示禁用。
 #!category=🐻 DailyJobs

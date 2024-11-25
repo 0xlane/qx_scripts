@@ -1,0 +1,12 @@
+#!name= 🐻 DailyJobs签到脚本
+#!desc= 包括京东京豆签到。部分脚本获取Cookie方法请看脚本注释。注意，该Loon链接目前仅适用于"订阅脚本"，非"插件"。添加脚本订阅后请按需启用脚本。
+#!author= reinject
+#!homepage= https://github.com/reinject/qx_scripts/tree/main
+#!icon= https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png
+
+[Script]
+cron "20 8 * * *" script-path=https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/JDBean.js, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, timeout=300, enabled=false, tag=京东京豆 [签到]
+http-request ^https?:\/\/api\.m\.jd\.com\/ script-path=https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/HavalZhiJia.js, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=false, tag=京东京豆 [Cookie]
+
+[MITM]
+hostname = api.m.jd.com

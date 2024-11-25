@@ -109,6 +109,7 @@ function GetCookie() {
     if ($request.url.startsWith("https://api.m.jd.com/")) {
         if ($request.headers["Cookie"] && $request.headers["Cookie"] != cookieJD) {
             $core.notify(SCRIPT_NAME, "Cookie获取成功");
+            $core.logInfo($request.headers["Cookie"]);
             $core.write($request.headers["Cookie"], "CookieJD");
         }
     }

@@ -5,9 +5,9 @@
 #!category=🐻 DailyJobs
 
 [Script]
-哈弗智家[签到] = type=cron,cronexp="{{{定时签到}}}",wake-system=1,script-update-interval=0,timeout=600,script-path=https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/HavalZhiJia.js
+哈弗智家[签到] = type=cron,cronexp="{{{定时签到}}}",wake-system=1,script-update-interval=0,timeout=600,script-path=https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/HavalZhiJia.js
 
-{{{禁用脚本}}} = type=http-response,requires-body=1,pattern=^https?:\/\/(gw-h5-gateway|gw-app-gateway)\.gwmapp-h\.com\/app-api\/api\/v1\.0\/(signIn\/sign|pointInterflow\/querySumPoint|userAuth\/route\/getUserDetail),script-path=https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/HavalZhiJia.js
+{{{禁用脚本}}} = type=http-response,requires-body=1,pattern=^https?:\/\/(gw-h5-gateway|gw-app-gateway)\.gwmapp-h\.com\/app-api\/api\/v1\.0\/(signIn\/sign|pointInterflow\/querySumPoint|userAuth\/route\/getUserDetail),script-path=https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/HavalZhiJia.js
 
 [MITM]
 {{{禁用MITM}}} = %APPEND% gw-h5-gateway.gwmapp-h.com, gw-app-gateway.gwmapp-h.com

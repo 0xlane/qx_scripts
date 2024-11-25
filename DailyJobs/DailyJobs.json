@@ -13,7 +13,7 @@
                 "CookieTB"
             ],
             "descs_html": [
-                "<h4 align=\"center\">获取Cookie以及脚本配置请查看<a href=\"https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/TieBa.js\">脚本注释</a></h4>"
+                "<h4 align=\"center\">获取Cookie以及脚本配置请查看<a href=\"https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/TieBa.js\">脚本注释</a></h4>"
             ],
             "settings": [
                 {
@@ -46,7 +46,7 @@
                     "desc": "想签到几个汇总到一个通知里, 这里就填几个(比如我有13个要签到的, 这里填了5, 就会分三次推送通知)"
                 }
             ],
-            "script": "https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/TieBa.js",
+            "script": "https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/TieBa.js",
             "author": "@sazs34, @NobyDa",
             "repo": "https://github.com/NobyDa/Script/blob/master/BDTieBa-DailyBonus/TieBa.js",
             "icons": [
@@ -61,9 +61,9 @@
                 "UserInfosHaval"
             ],
             "descs_html": [
-                "<h4 align=\"center\">获取Cookie以及脚本配置请查看<a href=\"https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/HavalZhiJia.js\">脚本注释</a></h4>"
+                "<h4 align=\"center\">获取Cookie以及脚本配置请查看<a href=\"https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/HavalZhiJia.js\">脚本注释</a></h4>"
             ],
-            "script": "https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/HavalZhiJia.js",
+            "script": "https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/HavalZhiJia.js",
             "author": "@reinject",
             "repo": "https://github.com/0xlane/qx_scripts/blob/main/DailyJobs/HavalZhiJia.js",
             "icons": [
@@ -74,12 +74,12 @@
     ],
     "task": [
         {
-            "config": "00 8 * * * https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/TieBa.js, tag=百度贴吧签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/tieba.png",
-            "addons": "https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/QuantumultX/Snippet/TieBaCookie.snippet, tag=百度贴吧(获取Cookie)"
+            "config": "00 8 * * * https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/TieBa.js, tag=百度贴吧签到, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/tieba.png",
+            "addons": "https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/QuantumultX/Snippet/TieBaCookie.snippet, tag=百度贴吧(获取Cookie)"
         },
         {
-            "config": "10 8 * * * https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/HavalZhiJia.js, tag=哈弗智家签到, img-url=https://raw.githubusercontent.com/0xlane/qx_scripts/main/mini/Color/haval.png",
-            "addons": "https://raw.githubusercontent.com/0xlane/qx_scripts/main/DailyJobs/QuantumultX/Snippet/HavalZhiJiaCookie.snippet, tag=哈弗智家(获取Cookie)"
+            "config": "10 8 * * * https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/HavalZhiJia.js, tag=哈弗智家签到, img-url=https://raw.githubusercontent.com/0xlane/qx_scripts/main/mini/Color/haval.png",
+            "addons": "https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/QuantumultX/Snippet/HavalZhiJiaCookie.snippet, tag=哈弗智家(获取Cookie)"
         }
     ]
 }

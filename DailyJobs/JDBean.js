@@ -113,6 +113,7 @@ function GetCookie() {
             $core.write("CookieJD", $request.headers["Cookie"]);
         }
     }
+    return $core.done();
 }
 
 function MagicJS(scriptName = 'MagicJS', logLevel = 'INFO') {

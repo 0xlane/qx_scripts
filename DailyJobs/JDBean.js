@@ -32,7 +32,7 @@ var $core = MagicJS(SCRIPT_NAME);
 var cookieJD = $core.read("CookieJD") || "";
 
 var url_fetch_sign = {
-    url: "https://gw-h5-gateway.gwmapp-h.com/app-api/api/v1.0/signIn/sign",
+    url: "https://api.m.jd.com/client.action?functionId=signBeanAct&appid=signed_wh5",
     headers: {
         Cookie: "",
         Referer: "https://jdbeanscalendar-pro.pf.jd.com/",
@@ -47,6 +47,11 @@ if ($core.isRequest) {
 }
 
 function signJDBean() {
+    if (!cookieJD) {
+        $core.notify(SCRIPT_NAME, "签到失败", "请先获取Cookie");
+        return $core.done();
+    }
+
     url_fetch_sign.headers.Cookie = cookieJD;
     $core.get(url_fetch_sign, function(error, response, body){
         if (error) {

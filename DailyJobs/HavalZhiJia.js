@@ -64,7 +64,7 @@ if ($core.isRequest) {
 
 function signHaval() {
     if (!userInfos || !userInfos.length) {
-        $core.notify("哈弗智家签到", "签到失败", "请先获取获取token");
+        $core.notify(SCRIPT_NAME, "签到失败", "请先获取token");
         return $core.done();
     }
 
@@ -77,7 +77,7 @@ function signHaval() {
     var iter = () => {
         if (index == len) {
             $core.logDebug(JSON.stringify(result));
-            $core.notify("哈弗智家签到", "签到结果", result.join("\n"));
+            $core.notify(SCRIPT_NAME, "签到结果", result.join("\n"));
             return $core.done();
         }
         var user = userInfos[index];
@@ -91,7 +91,7 @@ function signHaval() {
                 index++;
                 return iter();
             } else {
-                // $core.notify("哈弗智家签到", "签到结果", response.body);
+                // $core.notify(SCRIPT_NAME, "签到结果", response.body);
                 var body = JSON.parse(data);
                 var isSuccessResponse = body && (body.code == "000000" || body.code == "651028");
                 if (!isSuccessResponse) {
@@ -151,11 +151,11 @@ function GetAccessToken() {
                 let exist = userInfos.find(function (x) { return x.userId == userId; });
                 if (!exist) {
                     userInfos.push(userInfo);
-                    $core.notify("哈弗智家签到", "添加签到用户", `Token获取成功，将为用户${nick}每日签到`);
+                    $core.notify(SCRIPT_NAME, "添加签到用户", `Token获取成功，将为用户${nick}每日签到`);
                     $core.write(JSON.stringify(userInfos), "UserInfosHaval");
                 } else if (exit.headerAccessToken != headerAccessToken) {
                     exit.headerAccessToken = headerAccessToken;
-                    $core.notify("哈弗智家签到", "更新签到用户", `Token更新成功，将为用户${nick}每日签到`);
+                    $core.notify(SCRIPT_NAME, "更新签到用户", `Token更新成功，将为用户${nick}每日签到`);
                     $core.write(JSON.stringify(userInfos), "UserInfosHaval");
                 }
             }

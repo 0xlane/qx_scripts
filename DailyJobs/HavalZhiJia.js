@@ -152,11 +152,11 @@ function GetAccessToken() {
                 if (!exist) {
                     userInfos.push(userInfo);
                     $core.notify(SCRIPT_NAME, "添加签到用户", `Token获取成功，将为用户${nick}每日签到`);
-                    $core.write(JSON.stringify(userInfos), "UserInfosHaval");
+                    $core.write("UserInfosHaval", JSON.stringify(userInfos));
                 } else if (exit.headerAccessToken != headerAccessToken) {
                     exit.headerAccessToken = headerAccessToken;
                     $core.notify(SCRIPT_NAME, "更新签到用户", `Token更新成功，将为用户${nick}每日签到`);
-                    $core.write(JSON.stringify(userInfos), "UserInfosHaval");
+                    $core.write("UserInfosHaval", JSON.stringify(userInfos));
                 }
             }
         }

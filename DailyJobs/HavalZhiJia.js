@@ -3,7 +3,7 @@
 
 脚本原作者: @reinject
 平台兼容: QuantumultX, Surge, Loon
-更新日期: 2024/11/25
+更新日期: 2024/11/29
 
 获取Cookie说明：
 打开哈弗智家App后, 点击“我的-设置-清理缓存”或重新登录，如通知成功获取token则可以使用该脚本.
@@ -154,8 +154,8 @@ function GetAccessToken() {
                     userInfos.push(userInfo);
                     $core.notify(SCRIPT_NAME, "添加签到用户", `Token获取成功，将为用户${nick}每日签到`);
                     $core.write("UserInfosHaval", JSON.stringify(userInfos));
-                } else if (exit.headerAccessToken != headerAccessToken) {
-                    exit.headerAccessToken = headerAccessToken;
+                } else if (exist.headerAccessToken != headerAccessToken) {
+                    exist.headerAccessToken = headerAccessToken;
                     $core.notify(SCRIPT_NAME, "更新签到用户", `Token更新成功，将为用户${nick}每日签到`);
                     $core.write("UserInfosHaval", JSON.stringify(userInfos));
                 }

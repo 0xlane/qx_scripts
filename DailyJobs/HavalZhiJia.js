@@ -127,7 +127,7 @@ function signHaval() {
 
     $core.sleep(30 * 1000).then(() => {
         // 30s超时结束
-        console.log(JSON.stringify(result));
+        $core.logError(JSON.stringify(result));
         $core.notify(SCRIPT_NAME, "脚本运行超时");
         return $core.done();
     });
@@ -148,6 +148,7 @@ function GetAccessToken() {
                     nick,
                     headerAccessToken
                 };
+                $core.logInfo(JSON.stringify(userInfo));
                 let exist = userInfos.find(function (x) { return x.userId == userId; });
                 if (!exist) {
                     userInfos.push(userInfo);

@@ -203,7 +203,7 @@ function MagicJS(scriptName = 'MagicJS', logLevel = 'INFO') {
         get isLoon() { return typeof $loon !== 'undefined' };
         get isJSBox() { return typeof $drive !== 'undefined' };
         get isNode() { return typeof module !== 'undefined' && !this.isJSBox };
-        get isRequest() { return (typeof $request !== 'undefined') && (typeof $response === 'undefined') }
+        get isRequest() { return typeof $request !== 'undefined' }
         get isResponse() { return typeof $response !== 'undefined' }
         get request() { return (typeof $request !== 'undefined') ? $request : undefined }
         get response() {

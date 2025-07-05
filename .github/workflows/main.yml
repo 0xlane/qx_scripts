@@ -1,0 +1,23 @@
+name: Sync remote qx snippets
+on:
+  schedule:
+    - cron:  '0 */12 * * *'
+  workflow_dispatch:
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync remote qx snippets
+        run: |
+          git config --global user.name 'someone'
+          git config --global user.email 'someone@example.com'
+          git config --global credential.helper store
+          git clone https://${{ secrets.PAT_TOKEN }}@github.com/0xlane/qx_scripts.git tmp
+          cd tmp/qx_snippets/
+          cat ../qx_remote.txt | while read line; do
+            echo "Downloading $line"
+            wget $line
+          done
+          git add .
+          git commit -m "sync remote"
+          git push origin main          

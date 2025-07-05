@@ -1,0 +1,3 @@
+https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/NeteaseAds.conf
+https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/XiaoHongShuAds.conf
+https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/YoutubeAds.conf

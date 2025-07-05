@@ -9,7 +9,6 @@ jobs:
     steps:
       - name: Sync remote qx snippets
         run: |
-          set -e
           git config --global user.name 'someone'
           git config --global user.email 'someone@example.com'
           git config --global credential.helper store
@@ -21,5 +20,9 @@ jobs:
           done
           git add .
           cd ..
-          git commit -m "sync remote"
-          git push -f origin main
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "sync remote"
+            git push -f origin main
+          else
+            echo "No changes to commit"
+          fi

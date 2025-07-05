@@ -16,7 +16,7 @@ jobs:
           cd tmp/qx_snippets/
           cat ../qx_remote.txt | while read line; do
             echo "Downloading $line"
-            wget $line
+            wget $line -O $(basename $line)
           done
           git add .
           git commit -m "sync remote"

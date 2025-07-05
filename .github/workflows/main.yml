@@ -19,5 +19,6 @@ jobs:
             wget $line -O $(basename $line)
           done
           git add .
+          cd ..
           git commit -m "sync remote"
           git push origin main          

@@ -3,7 +3,7 @@
 
 脚本原作者: @reinject
 平台兼容: QuantumultX, Surge, Loon
-更新日期: 2024/11/29
+更新日期: 2025/08/04
 
 获取Cookie说明：
 打开哈弗智家App后, 点击“我的-设置-清理缓存”或重新登录，如通知成功获取token则可以使用该脚本.
@@ -29,8 +29,7 @@ https://raw.githubusercontent.com/0xlane/qx_scripts/refs/heads/main/DailyJobs/Lo
 const SCRIPT_NAME = "哈弗智家签到";
 
 var $core = MagicJS(SCRIPT_NAME);
-var userInfosHavalVal = $core.read("UserInfosHaval");
-var userInfos = userInfosHavalVal || [];
+var user = $core.read("UserInfoHaval");
 
 var url_get_token = "https://gw-app-gateway.gwmapp-h.com/app-api/api/v1.0/userAuth/route/getUserDetail";
 var url_fetch_sign = {
@@ -63,67 +62,10 @@ if ($core.isRequest) {
 }
 
 function signHaval() {
-    if (!userInfos || !userInfos.length) {
+    if (!user) {
         $core.notify(SCRIPT_NAME, "签到失败", "请先获取token");
         return $core.done();
     }
-
-    var index = 0;
-    var len = userInfos.length;
-
-    $core.logDebug(`用户数：${userInfos.length}`);
-
-    var result = [];
-    var iter = () => {
-        if (index == len) {
-            $core.logDebug(JSON.stringify(result));
-            $core.notify(SCRIPT_NAME, "签到结果", result.join("\n"));
-            return $core.done();
-        }
-        var user = userInfos[index];
-
-        url_fetch_sign.headers.accessToken = user.headerAccessToken;
-        url_fetch_sign_status.headers.accessToken = user.headerAccessToken;
-        $core.post(url_fetch_sign, function (error, response, data) {
-            if (error) {
-                // console.log(JSON.stringify(error));
-                result.push(`用户${user.nick}签到失败：${JSON.stringify(error)}`);
-                index++;
-                return iter();
-            } else {
-                // $core.notify(SCRIPT_NAME, "签到结果", response.body);
-                var body = JSON.parse(data);
-                var isSuccessResponse = body && (body.code == "000000" || body.code == "651028");
-                if (!isSuccessResponse) {
-                    result.push(`用户${user.nick}签到失败：${(body && body.description) ? body.description : "接口数据获取失败"}`);
-                    index++;
-                    return iter();
-                }
-
-                $core.get(url_fetch_sign_status, function (error, response, data) {
-                    if (error) {
-                        // console.log(JSON.stringify(error));
-                        result.push(`用户${user.nick}签到成功：${JSON.stringify(error)}`);
-                        index++;
-                        return iter();
-                    } else {
-                        var body = JSON.parse(data);
-                        var isSuccessResponse = body && body.code == "000000";
-                        if (!isSuccessResponse) {
-                            result.push(`用户${user.nick}签到成功：${(body && body.description) ? body.description : "积分接口数据获取失败"}`);
-                            index++;
-                            return iter();
-                        }
-
-                        var remindPoint = (body && body.data.remindPoint) ? body.data.remindPoint : "unkown";
-                        result.push(`用户${user.nick}签到成功：当前共有${remindPoint}积分`);
-                        index++;
-                        return iter();
-                    }
-                })
-            }
-        })
-    };
 
     $core.sleep(30 * 1000).then(() => {
         // 30s超时结束
@@ -132,7 +74,42 @@ function signHaval() {
         return $core.done();
     });
 
-    iter(index);
+    url_fetch_sign.headers.accessToken = user.headerAccessToken;
+    url_fetch_sign_status.headers.accessToken = user.headerAccessToken;
+    $core.post(url_fetch_sign, function (error, response, data) {
+        if (error) {
+            // console.log(JSON.stringify(error));
+            $core.notify(SCRIPT_NAME, "签到结果", `用户${user.nick}签到失败：${JSON.stringify(error)}`);
+            return $core.done();
+        } else {
+            // $core.notify(SCRIPT_NAME, "签到结果", response.body);
+            var body = JSON.parse(data);
+            var isSuccessResponse = body && (body.code == "000000" || body.code == "651028");
+            if (!isSuccessResponse) {
+                $core.notify(SCRIPT_NAME, "签到结果", `用户${user.nick}签到失败：${(body && body.description) ? body.description : "接口数据获取失败"}`);
+                return $core.done();
+            }
+
+            $core.get(url_fetch_sign_status, function (error, response, data) {
+                if (error) {
+                    // console.log(JSON.stringify(error));
+                    $core.notify(SCRIPT_NAME, "签到结果", `用户${user.nick}签到失败：${JSON.stringify(error)}`);
+                    return $core.done();
+                } else {
+                    var body = JSON.parse(data);
+                    var isSuccessResponse = body && body.code == "000000";
+                    if (!isSuccessResponse) {
+                        $core.notify(SCRIPT_NAME, "签到结果", `用户${user.nick}签到成功：${(body && body.description) ? body.description : "积分接口数据获取失败"}`);
+                        return $core.done();
+                    }
+
+                    var remindPoint = (body && body.data.remindPoint) ? body.data.remindPoint : "unkown";
+                    $core.notify(SCRIPT_NAME, "签到结果", `用户${user.nick}签到成功：当前共有${remindPoint}积分`);
+                    return $core.done();
+                }
+            })
+        }
+    })
 }
 
 function GetAccessToken() {
@@ -149,16 +126,8 @@ function GetAccessToken() {
                     headerAccessToken
                 };
                 $core.logInfo(JSON.stringify(userInfo));
-                let exist = userInfos.find(function (x) { return x.userId == userId; });
-                if (!exist) {
-                    userInfos.push(userInfo);
-                    $core.notify(SCRIPT_NAME, "添加签到用户", `Token获取成功，将为用户${nick}每日签到`);
-                    $core.write("UserInfosHaval", JSON.stringify(userInfos));
-                } else if (exist.headerAccessToken != headerAccessToken) {
-                    exist.headerAccessToken = headerAccessToken;
-                    $core.notify(SCRIPT_NAME, "更新签到用户", `Token更新成功，将为用户${nick}每日签到`);
-                    $core.write("UserInfosHaval", JSON.stringify(userInfos));
-                }
+                $core.notify(SCRIPT_NAME, "获取Token成功", `Token获取成功，将为用户${nick}每日签到`);
+                $core.write("UserInfoHaval", JSON.stringify(userInfo));
             }
         }
     }
